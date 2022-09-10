@@ -31,32 +31,12 @@ export class Phonebook extends React.Component {
             ({ name }) => name === contactsFormState.name);
         isRepeat
             ? alert(`${name} is already in contacts`)
-            : this.setState((prevState) => ({
-                contacts: [contact, ...prevState.contacts],
+            : this.setState(({contacts}) => ({
+                contacts: [contact, ...contacts],
         }));
-        // this.setState(({contacts}) => {
-        //     return {
-        //         contacts: [...contacts, contact]
-        //     }
         
-        
-}
-
-//     getVisibleContacts = () => {
-//         const { contacts } = this.state;
-//         return contacts.map((contact) =>
-//         contact.name)
-// }
-
-    findContact = () => {
-        const { contacts } = this.state;
-        return contacts;
     }
-    
-    setFilterToState = filterData => {
-        console.log(filterData)
-        // this.setState({...this.state, filter: `${filterData}`})
-    }
+
     changeFilter = e => {
         this.setState({
             filter: e.currentTarget.value,
@@ -64,6 +44,11 @@ export class Phonebook extends React.Component {
         console.log(e.currentTarget.value, this.state)
     }
 
+    deleteContacts = (contactId) => {
+        this.setState(({contacts}) => ({
+        contacts: contacts.filter(({ id }) => id !== contactId),
+        }));
+    };
 
 
 
@@ -84,6 +69,7 @@ export class Phonebook extends React.Component {
                 onChange={this.changeFilter } />
             <ContactsList
                 contacts={visibleContacts}
+                deleteContacts={this.deleteContacts}
             />
         </div>
     )
