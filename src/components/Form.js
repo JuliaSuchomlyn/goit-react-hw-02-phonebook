@@ -3,17 +3,19 @@ import { nanoid } from "nanoid";
 
 export class Form extends React.Component {
     state = {
-        name: ""
+        name: "",
+        number: ""
     }
 
 
     nameInputId = nanoid();
+    numberInputId = nanoid();
 
 
     handleChange = e => {
         const { name, value } = e.currentTarget;
         this.setState({
-            [name]: value
+            [name]: value,
         })
     }
 
@@ -27,7 +29,7 @@ export class Form extends React.Component {
     }
 
     reset = () => {
-        this.setState({ name: ""})
+        this.setState({ name: "", number: ""})
     }
     
     render() {
@@ -43,9 +45,21 @@ export class Form extends React.Component {
                         value={this.state.name}
                         onChange={this.handleChange}
                         id={this.nameInputId}
-                    />
-                    
+                    />                    
                 </label>
+                <label htmlFor={this.numberInputId}> Number
+                    <input
+                        type="tel"
+                        name="number"
+                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        required
+                        value={this.state.number}
+                        onChange={this.handleChange}
+                        id={this.numberInputId}
+                        />
+                </label>
+
                 <button type="submit">Add contact</button>
             </form>
         );

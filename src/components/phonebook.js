@@ -10,16 +10,17 @@ export class Phonebook extends React.Component {
 
     
 
-    formSubmitHandler = ({name}) => {
-        console.log(name)
+    formSubmitHandler = ({name, number}) => {
+        console.log(name, number)
             const contact = {
             id: nanoid(),
-            name
+            name,
+            number
         };
         console.log(contact)
-        this.setState((prevState) => {
+        this.setState(({contacts}) => {
             return {
-                contacts: [...prevState.contacts, contact]
+                contacts: [...contacts, contact]
             }
         })
         

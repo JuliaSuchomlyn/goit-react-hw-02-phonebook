@@ -1,7 +1,7 @@
-export const ContactsItem = ({  name }) => {
+export const ContactsItem = ({  name, number }) => {
     return (
         <li>
-            {name}
+            {name}: {number}
         </li>
     )
 }
