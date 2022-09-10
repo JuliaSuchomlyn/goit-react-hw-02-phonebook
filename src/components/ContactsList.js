@@ -1,9 +1,9 @@
 import { ContactsItem } from "./ContacsItem";
 
-export const ContactsList = ({ findContact }) => {
+export const ContactsList = ({ contacts }) => {
     return (
         <ul>
-            {findContact().map(({ id, name, number }) => {
+            {contacts.map(({ id, name, number }) => {
                 return (
                     <ContactsItem
                         key={id}
