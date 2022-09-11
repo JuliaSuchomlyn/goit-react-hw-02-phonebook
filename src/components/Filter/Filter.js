@@ -1,11 +1,11 @@
-
-
+import PropTypes from 'prop-types';
+import { FilterByName } from "./Filter.styled"
 
 export const Filter = ({filter, onChange}) => {
     
 
         return (
-            <label>
+            <FilterByName>
                 Find contacts by name
                 <input
                     type="text"
@@ -16,6 +16,11 @@ export const Filter = ({filter, onChange}) => {
                     value={filter}
                     onChange={onChange}
                 />
-            </label>
-       )
-    }
+            </FilterByName>
+        )
+}
+    
+Filter.propTypes = {
+    filter: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+}
