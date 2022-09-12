@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { nanoid } from "nanoid";
 import { FormLabel, FormRequest } from './Form.styled';
@@ -65,5 +66,7 @@ export class Form extends React.Component {
         );
     }
 
-
+}
+Form.propTypes = {
+    onSubmit: PropTypes.func.isRequired
 }
