@@ -26,7 +26,7 @@ export class App extends React.Component {
         // console.log(contact)
 
         const isRepeat = this.state.contacts.find(
-            ({ name }) => name === contactsFormState.name);
+            ({ name }) => name.toLowerCase() === contactsFormState.name.toLowerCase());
         isRepeat
             ? alert(`${name} is already in contacts`)
             : this.setState(({contacts}) => ({
